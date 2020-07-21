@@ -34,7 +34,7 @@
 
 <body class="bg-default">
   <!-- Navbar -->
-  <nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-gradient-success">
+  <nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-gradient-dark">
      <div class="container">
      <a href="{{ url('/') }}">
                  <img src="{{ asset('assets/img/icon.png') }}" class="avatar avatar-sm">
@@ -139,7 +139,7 @@
               <div class="text-center text-muted mb-4">
                 Login
               </div>
-              <form method="POST" action="{{ route('login') }}">
+              <form method="POST" action="{{ url('native/login') }}">
                         @csrf
 
                         <div class="form-group row">

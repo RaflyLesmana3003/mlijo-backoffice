@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumn1ToUsersTable extends Migration
+class AddColumn1ToMlijosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AddColumn1ToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('level')->nullable();
-            $table->string('phone_number')->nullable()->unique();
-            $table->string('status')->nullable();
+        Schema::table('mlijos', function (Blueprint $table) {
+            $table->string('atasnama')->nullable();
+            $table->string('bank_id')->nullable();
+            $table->string('no_rekening')->nullable();
+            
         });
     }
 
@@ -27,7 +28,7 @@ class AddColumn1ToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('mlijos', function (Blueprint $table) {
             //
         });
     }

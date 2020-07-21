@@ -81,18 +81,32 @@
                     <ul class="navbar-nav">
                         @if (null !== Auth::user())
                         @if (Auth::user()->level == 1)
+                        @if (Auth::user()->status == 0)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                                <i class="fa fa-home text-info"></i>
+                                <span class="nav-link-text">Beranda</span>
+                            </a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                                <i class="fa fa-home text-info"></i>
+                                <span class="nav-link-text">Beranda</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#navbar-home" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
                                 <i class="fa fa-home text-success"></i>
-                                <span class="nav-link-text">home</span>
+                                <span class="nav-link-text">produk</span>
                             </a>
                             <div class="collapse" id="navbar-home">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ url('106a6c241b8797f52e1e77317b96a201') }}" class="nav-link">home user</a>
+                                        <a href="{{ url('produk') }}" class="nav-link">Daftar produk</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('106a6c241b8797f52e1e77317b96a201/kreator') }}" class="nav-link">home kreator</a>
+                                        <a href="{{ url('106a6c241b8797f52e1e77317b96a201/kreator') }}" class="nav-link">Tambah produk</a>
                                     </li>
                                     <!-- <li class="nav-item">
                                         <a href="{{ url('list/konten') }}" class="nav-link">daftar konten</a>
@@ -100,6 +114,19 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                                <i class="fa fa-home text-info"></i>
+                                <span class="nav-link-text">transaksi</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                                <i class="fa fa-home text-info"></i>
+                                <span class="nav-link-text">pengaturan</span>
+                            </a>
+                        </li>
+                        @endif
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
@@ -127,7 +154,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                            <a class="nav-link" href="{{ url('penarikandana') }}">
                                 <i class="fa fa-dollar text-success"></i>
                                 <span class="nav-link-text">penarikan dana</span>
                             </a>
@@ -189,7 +216,7 @@
 
 
 
-                    <!-- </ul>
+                        <!-- </ul>
                     <hr class="my-3">
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
@@ -226,7 +253,7 @@
                 <div class="row d-none d-lg-block mr-3">
                     <div class="col-6 ">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('assets/img/favicon.png') }}" class="avatar avatar-sm">
+                            <!-- <img src="{{ asset('assets/img/favicon.png') }}" class="avatar avatar-sm"> -->
                         </a>
                     </div>
                     <div class="col-6 ">

@@ -20,6 +20,8 @@ class CreateMlijosTable extends Migration
             $table->string('lokasi')->nullable();
             $table->string('parent')->nullable();
             $table->string('child')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('foto_ktp')->nullable();
             $table->timestamps();
         });
     }

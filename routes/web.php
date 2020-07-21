@@ -20,6 +20,24 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/mlijo', function () {
-    return view('mlijo/index');
+
+//admin
+Route::get('/mlijo','MlijoController@index');
+Route::get('/penarikandana','PenarikanController@index');
+Route::post('/aktifasiakun', 'MlijoController@aktivasi');
+Route::post('/nonaktifasiakun', 'MlijoController@nonaktivasi');
+
+//mlijo
+Route::get('/produk','MlijoController@lihatproduk');
+
+Route::get('/gabung', function () {
+    return view('mlijo/gabung');
 });
+
+Route::post('/gabung', 'MlijoController@permintaan_daftar');
+
+
+
+//login
+Route::get('native/login','AuthNativeController@index');
+Route::post('native/login','AuthNativeController@auth');
