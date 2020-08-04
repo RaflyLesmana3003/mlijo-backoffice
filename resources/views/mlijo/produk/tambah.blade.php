@@ -9,12 +9,12 @@
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
-                    <h6 class="h2 text-white d-inline-block mb-0">Mlijo</h6>
+                    <h6 class="h2 text-white d-inline-block mb-0">Tambah Produk</h6>
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb ">
                             <li class="breadcrumb-item "><a href="#" class="text-success">Home</a></li>
                             <li class="breadcrumb-item"><a href="#" class="text-success">Mlijo</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">list</li>
+                            <li class="breadcrumb-item active" aria-current="page">Tambah Produk</li>
                         </ol>
                     </nav>
                 </div>
@@ -37,51 +37,36 @@
             </div>
             <!-- Card body -->
             <div class="card-body">
-                <div class="table-responsive py-4">
-                    <table class="table table-flush" id="datatable-basic">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Nama</th>
-                                <th>No HP</th>
-                                <th>No KTP</th>
-                                <th>status</th>
-                                <th>tgl daftar</th>
-                                <th>Opsi</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Nama</th>
-                                <th>No HP</th>
-                                <th>No KTP</th>
-                                <th>status</th>
-                                <th>tgl daftar</th>
-                                <th>Opsi</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            @if(isset($mlijo))
-                            @foreach($mlijo as $mlijo)
-                            <tr>
-                                <td>{{$mlijo->name}}</td>
-                                <td>{{$mlijo->phone_number}}</td>
-                                <td>{{$mlijo->ktp}}</td>
-                                <td>{{$mlijo->status}}</td>
-                                <td>{{$mlijo->created_at}}</td>
-                                <td>
-                                    @if($mlijo->status == "0")
-                                    <a href="#" class="btn btn-sm btn-success text-white" onclick="aktif({{$mlijo->id_user}})">aktifkan akun</a>
-                                    @else
-                                    <a href="#" class="btn btn-sm btn-danger text-white" onclick="nonaktif({{$mlijo->id_user}})">nonaktifkan akun</a>
-
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Example select</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Example multiple select</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

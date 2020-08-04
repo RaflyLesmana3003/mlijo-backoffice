@@ -9,12 +9,12 @@
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
-                    <h6 class="h2 text-white d-inline-block mb-0">Mlijo</h6>
+                    <h6 class="h2 text-white d-inline-block mb-0">Produk</h6>
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb ">
                             <li class="breadcrumb-item "><a href="#" class="text-success">Home</a></li>
                             <li class="breadcrumb-item"><a href="#" class="text-success">Mlijo</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">list</li>
+                            <li class="breadcrumb-item active" aria-current="page">Produk</li>
                         </ol>
                     </nav>
                 </div>

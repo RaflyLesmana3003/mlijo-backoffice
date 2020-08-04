@@ -29,6 +29,8 @@ Route::post('/nonaktifasiakun', 'MlijoController@nonaktivasi');
 
 //mlijo
 Route::get('/produk','MlijoController@lihatproduk');
+Route::get('/produk/add','MlijoController@tambahproduk');
+Route::get('/transaksi','MlijoController@lihatproduk');
 
 Route::get('/gabung', function () {
     return view('mlijo/gabung');

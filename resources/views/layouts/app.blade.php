@@ -97,7 +97,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#navbar-home" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
-                                <i class="fa fa-home text-success"></i>
+                                <i class="fa fa-check text-success"></i>
                                 <span class="nav-link-text">produk</span>
                             </a>
                             <div class="collapse" id="navbar-home">
@@ -106,7 +106,7 @@
                                         <a href="{{ url('produk') }}" class="nav-link">Daftar produk</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('106a6c241b8797f52e1e77317b96a201/kreator') }}" class="nav-link">Tambah produk</a>
+                                        <a href="{{ url('produk/add') }}" class="nav-link">Tambah produk</a>
                                     </li>
                                     <!-- <li class="nav-item">
                                         <a href="{{ url('list/konten') }}" class="nav-link">daftar konten</a>
@@ -116,13 +116,13 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
-                                <i class="fa fa-home text-info"></i>
+                                <i class="fa fa-dollar text-yellow"></i>
                                 <span class="nav-link-text">transaksi</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
-                                <i class="fa fa-home text-info"></i>
+                                <i class="fa fa-gear text-danger"></i>
                                 <span class="nav-link-text">pengaturan</span>
                             </a>
                         </li>

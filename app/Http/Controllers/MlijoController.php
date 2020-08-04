@@ -37,6 +37,18 @@ class MlijoController extends Controller
 
         return view('mlijo/produk/index',['mlijo' => $mlijousers]);
     }
+
+    public function tambahproduk()
+    {
+        // $mlijousers = DB::table('users')->where('level', '=', "1")->get();
+        $mlijousers = DB::table('users')
+            ->join('mlijos', 'users.id', '=', 'mlijos.id_user')
+            ->select('users.*', 'mlijos.*')
+            ->get();
+        // dd($mlijousers);
+
+        return view('mlijo/produk/tambah',['mlijo' => $mlijousers]);
+    }
     
     public function aktivasi(Request $request)
     {
