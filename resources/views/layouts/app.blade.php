@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css" />
+    @yield('css')
     <style>
         .show-read-more .more-text {
             display: none;
@@ -83,14 +84,14 @@
                         @if (Auth::user()->level == 1)
                         @if (Auth::user()->status == 0)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                            <a class="nav-link" href="{{ url('home') }}">
                                 <i class="fa fa-home text-info"></i>
                                 <span class="nav-link-text">Beranda</span>
                             </a>
                         </li>
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                            <a class="nav-link" href="{{ url('home') }}">
                                 <i class="fa fa-home text-info"></i>
                                 <span class="nav-link-text">Beranda</span>
                             </a>
@@ -105,9 +106,9 @@
                                     <li class="nav-item">
                                         <a href="{{ url('produk') }}" class="nav-link">Daftar produk</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a href="{{ url('produk/add') }}" class="nav-link">Tambah produk</a>
-                                    </li>
+                                    </li> -->
                                     <!-- <li class="nav-item">
                                         <a href="{{ url('list/konten') }}" class="nav-link">daftar konten</a>
                                     </li> -->
@@ -115,13 +116,13 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                            <a class="nav-link" href="{{ url('transaksi') }}">
                                 <i class="fa fa-dollar text-yellow"></i>
                                 <span class="nav-link-text">transaksi</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                            <a class="nav-link" href="{{ url('setting') }}">
                                 <i class="fa fa-gear text-danger"></i>
                                 <span class="nav-link-text">pengaturan</span>
                             </a>
@@ -129,7 +130,7 @@
                         @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                            <a class="nav-link" href="{{ url('home') }}">
                                 <i class="fa fa-home text-info"></i>
                                 <span class="nav-link-text">Beranda</span>
                             </a>
@@ -144,9 +145,9 @@
                                     <li class="nav-item">
                                         <a href="{{ url('mlijo') }}" class="nav-link">Data Mlijo</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a href="{{ url('106a6c241b8797f52e1e77317b96a201/kreator') }}" class="nav-link">Tambah Mlijo</a>
-                                    </li>
+                                    </li> -->
                                     <!-- <li class="nav-item">
                                         <a href="{{ url('list/konten') }}" class="nav-link">daftar konten</a>
                                     </li> -->
@@ -165,7 +166,7 @@
                                 <span class="nav-link-text">Data customer</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item d-none">
                             <a class="nav-link" href="#navbar-admin" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
                                 <i class="fa fa-user-secret text-pink"></i>
                                 <span class="nav-link-text">Admin</span>
@@ -189,7 +190,7 @@
                         @if (Route::has('login'))
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('106a6c241b8797f52e1e77317b96a201') }}">
+                            <a class="nav-link" href="{{ url('home') }}">
                                 <i class="fa fa-money text-success"></i>
                                 <span class="nav-link-text">beranda</span>
                             </a>
@@ -436,6 +437,33 @@
     <script src="{{ asset('assets/js/demo.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+    <script>
+        $(".select2").select2()
+
+        function ajaxData(url, params, success, error, method) {
+            method = (empty(method) ? 'POST' : method)
+
+
+
+            $.ajax({
+                type: method,
+                url: '{{url("/")}}' + url,
+                data: params + "&_token=" + $('meta[name="csrf-token"]').attr('content'),
+                dataType: "JSON",
+                success: function(response) {
+                    success(response)
+                },
+                error: function(Status) {
+                    error(error)
+                }
+            });
+        }
+
+        function empty(data) {
+            return (data == [] || data == '' || data == undefined)
+        }
+    </script>
+    @yield('footer')
 
 
 </body>

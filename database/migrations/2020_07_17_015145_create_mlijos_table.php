@@ -17,7 +17,8 @@ class CreateMlijosTable extends Migration
             $table->id();
             $table->string('id_user');
             $table->string('nama');
-            $table->string('lokasi')->nullable();
+            $table->string('long')->nullable();
+            $table->string('lat')->nullable();
             $table->string('parent')->nullable();
             $table->string('child')->nullable();
             $table->string('ktp')->nullable();

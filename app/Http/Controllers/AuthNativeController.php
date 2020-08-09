@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class AuthNativeController extends Controller
 {
@@ -16,14 +16,15 @@ class AuthNativeController extends Controller
         $email = $req->email;
         $pwd   = $req->password;
         if (Auth::attempt(['phone_number' => $email, 'password' => $pwd])) {
+
             if (Auth::user()->level == "1") {
                 if (Auth::user()->status == "0") {
                     return view('mlijo/menunggu_aktivasi');
                 }
-                    return view('home');
+                return redirect('home');
             }
         } elseif (Auth::attempt(['email' => $email, 'password' => $pwd])) {
-            return view('home');
+            return redirect('home');
         } else {
             return "Maaf email atau password yang anda masukan tidak sesuai.";
         }
