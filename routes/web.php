@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,17 @@ Route::get('/transaksi', 'MlijoController@lihatproduk');
 Route::get('/gabung', function () {
     return view('mlijo/gabung');
 });
+
+// customer
+Route::get('/customer/{search?}', function ($search = "") {
+    $data = DB::table('v_product');
+    if (!empty($search)) {
+        // $data = $data->where("nama", "like", "%" . $search . "%")->get();
+    }
+    return view("customer/home");
+});
+
+
 
 Route::post('/gabung', 'RegisterController@permintaan_daftar');
 
