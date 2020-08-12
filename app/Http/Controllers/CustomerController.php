@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\customer;
+use Darryldecode\Cart\Cart;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -12,9 +15,33 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        return $search;
+        $produk = DB::table('v_product');
+        if (!empty($req['key'])) {
+            $produk->where("name", 'like', '%' . $req['key'] . '%');
+        }
+        $produk = $produk->get();
+        // $req->session()->put("data", $produk);
+        // dd(Session::pull('data'));
+        return view("customer/home", ["product" => $produk]);
+    }
+
+    public function detail(Request $req)
+    {
+        // dd(Session::pull("data"));
+        $produk = DB::table('v_product')->where("id", "=", $req['id']);
+        $produk = $produk->get();
+        $produkLain = [];
+        if (empty($produk)) {
+            goto Last;
+        }
+        $produkLain = DB::table('v_product')->where([
+            ["id_mlijo", "=", $produk[0]->id_mlijo],
+            ["id", "!=", $req['id']]
+        ])->get();
+
+        Last: return view("customer/detail", ["produk" => $produk[0], "lain" => $produkLain]);
     }
 
     /**
@@ -22,6 +49,17 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function AddCart()
+    {
+
+        Cart::session(Auth::User()->id)->add(array(
+            'id' => $rowId,
+            'name' => $Product->name,
+            'price' => $Product->price,
+            'quantity' => 4,
+        ));
+    }
+
     public function create()
     {
         //
@@ -44,7 +82,7 @@ class CustomerController extends Controller
      * @param  \App\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(customer $customer)
+    public function show($customer)
     {
         //
     }
@@ -55,7 +93,7 @@ class CustomerController extends Controller
      * @param  \App\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(customer $customer)
+    public function edit($customer)
     {
         //
     }
@@ -67,7 +105,7 @@ class CustomerController extends Controller
      * @param  \App\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, customer $customer)
+    public function update(Request $request,   $customer)
     {
         //
     }
@@ -78,7 +116,7 @@ class CustomerController extends Controller
      * @param  \App\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(customer $customer)
+    public function destroy($customer)
     {
         //
     }

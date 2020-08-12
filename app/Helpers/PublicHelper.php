@@ -52,7 +52,7 @@ function formatRp($val)
     } else {
         $ret = number_format($val, 2, ',', '.');
     }
-    return "<div class='text-right rpan'>" . $ret . "</div>";
+    return   $ret;
 }
 
 function responsdata($status, $data = "Error 500 . Something Error")

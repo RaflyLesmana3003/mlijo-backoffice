@@ -19,12 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="_token" content="{{csrf_token()}}" />
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <meta name="author" content="Creative Tim">
     <title>Mlijo.id - @yield('title')</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/img/icon.png') }}" type="image/png">
@@ -42,12 +37,40 @@
     <!-- <link rel="stylesheet" href="{{ asset('assets/vendor/quill/dist/quill.core.css') }}"> -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/customer/style.css') }}" type="text/css">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css" />
     @yield('css')
     <style>
         .show-read-more .more-text {
             display: none;
+        }
+
+        .chard {
+            color: white;
+            text-decoration: none;
+            padding: 15px 26px;
+            position: relative;
+            display: inline-block;
+            border-radius: 2px;
+        }
+
+        .chard:hover {
+            color: aqua;
+        }
+
+        .chard .badge {
+            position: absolute;
+            top: 5px;
+            right: 1px;
+            /* padding: 5px 10px; */
+            border-radius: 50%;
+            background: red;
+            color: white;
+        }
+
+        .footer-v {
+            width: 100%;
         }
     </style>
 </head>
@@ -56,139 +79,7 @@
 
     <!-- Sidenav -->
 
-    <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
-        <div class="scrollbar-inner">
-            <!-- Brand -->
-            <div class="sidenav-header d-flex align-items-center">
-                <a class="navbar-brand" href="{{url('/')}}">
-                    <img src="{{ asset('assets/img/favicon.png') }}" class="navbar-brand-img" alt="...">
-                </a>
-                <div class="ml-auto">
-                    <!-- Sidenav toggler -->
-                    <div class="sidenav-toggler d-none d-xl-block " data-action="sidenav-unpin" data-target="#sidenav-main">
-                        <div class="sidenav-toggler-inner">
-                            <i class="sidenav-toggler-line "></i>
-                            <i class="sidenav-toggler-line"></i>
-                            <i class="sidenav-toggler-line"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="navbar-inner">
-                <!-- Collapse -->
-                <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                    <!-- Nav items -->
 
-                    <ul class="navbar-nav">
-                        @if (null !== Auth::user())
-                        @if (Auth::user()->level == 1)
-                        @if (Auth::user()->status == 0)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('home') }}">
-                                <i class="fa fa-home text-info"></i>
-                                <span class="nav-link-text">Beranda</span>
-                            </a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('home') }}">
-                                <i class="fa fa-home text-info"></i>
-                                <span class="nav-link-text">Beranda</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#navbar-home" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
-                                <i class="fa fa-check text-success"></i>
-                                <span class="nav-link-text">produk</span>
-                            </a>
-                            <div class="collapse" id="navbar-home">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ url('produk') }}" class="nav-link">Daftar produk</a>
-                                    </li>
-                                    <!-- <li class="nav-item">
-                                        <a href="{{ url('produk/add') }}" class="nav-link">Tambah produk</a>
-                                    </li> -->
-                                    <!-- <li class="nav-item">
-                                        <a href="{{ url('list/konten') }}" class="nav-link">daftar konten</a>
-                                    </li> -->
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('transaksi') }}">
-                                <i class="fa fa-dollar text-yellow"></i>
-                                <span class="nav-link-text">transaksi</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('setting') }}">
-                                <i class="fa fa-gear text-danger"></i>
-                                <span class="nav-link-text">pengaturan</span>
-                            </a>
-                        </li>
-                        @endif
-                        @else
-
-                        @endif
-                        @else
-                        @if (Route::has('login'))
-                        @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('home') }}">
-                                <i class="fa fa-money text-success"></i>
-                                <span class="nav-link-text">beranda</span>
-                            </a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('login') }}">
-                                <i class="fa fa-sign-in text-success"></i>
-                                <span class="nav-link-text">login</span>
-                            </a>
-                        </li>
-
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('register') }}">
-                                <i class="fa fa-user-plus text-success"></i>
-                                <span class="nav-link-text">register</span>
-                            </a>
-                        </li>
-                        @endif
-                        @endauth
-                        @endif
-                        @endif
-
-
-
-                        <!-- </ul>
-                    <hr class="my-3">
-                    <ul class="navbar-nav mb-md-3">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" target="_blank">
-
-                                <span class="nav-link-text text-muted">tips</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" target="_blank">
-
-                                <span class="nav-link-text text-muted">tentang kami</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" target="_blank">
-
-                                <span class="nav-link-text text-muted">bantuan</span>
-                            </a>
-                        </li>
-
-                    </ul> -->
-                </div>
-            </div>
-        </div>
-    </nav>
     <!-- Main content -->
     <div class="main-content  " id="panel">
 
@@ -210,14 +101,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <!-- Search form -->
-                    <form action="/da5e6997913d68b2b6a59381a94e664a" method="post" enctype="multipart/form-data" class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
-                        {{ csrf_field() }}
+                    <form action="{{url('customers')}}" method="get" enctype="multipart/form-data" class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                        <!-- {{ csrf_field() }} -->
                         <div class="form-group mb-0">
                             <div class="input-group input-group-alternative input-group-merge">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                                 </div>
-                                <input class="form-control" name="key" id="key" placeholder="pencarian" type="text" required>
+                                <input class="form-control" name="key" id="key" placeholder="pencarian" value="{{empty($_GET['key'])?'':$_GET['key']}}" type="text">
                             </div>
                         </div>
                         <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
@@ -226,6 +117,7 @@
                     </form>
                     <!-- Navbar links -->
                     <ul class="navbar-nav align-items-center ml-md-auto text-dark">
+
                         <li class="nav-item d-xl-none">
                             <!-- Sidenav toggler -->
                             <div class="pr-3 sidenav-toggler" data-action="sidenav-pin" data-target="#sidenav-main">
@@ -261,7 +153,15 @@
                             <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
                                 <i class="fa fa-search text-dark"></i>
                             </a>
-                        </li>@if (null !== Auth::user())
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link chard" href="#">
+                                <i class="fa fa-shopping-cart text-dark"></i>
+                                <span class="badge">{{ (empty((Session::pull('data')))?"": 1 )    }}</span>
+                            </a>
+                        </li>
+
+                        @if (null !== Auth::user())
                         @if(Auth::user()->level == 0)
 
                         <!-- <li class="nav-item d-none d-lg-block text-dark">
@@ -325,11 +225,11 @@
         @yield('content')
 
         <!-- Footer -->
-        <footer class="footer pt-0">
-            <div class="row align-items-center justify-content-lg-between">
+        <footer class="footer  pt-0">
+            <div class="row footer-v align-items-center justify-content-lg-between">
                 <div class="col-lg-6">
-                    <div class="copyright text-center text-lg-left text-muted">
-                        &copy; 2019 <a href="https://www.buataja.id" class="font-weight-bold ml-1 text-success" target="_blank">Mlijo.id</a>
+                    <div class="copyright text-center text-lg-left text-muted " style="margin-left: 10px;">
+                        &copy; 2019 <a href="https://www.buataja.id" class="font-weight-bold  text-success" target="_blank">Mlijo.id</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -359,8 +259,6 @@
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
     <!-- Optional JS -->
-    <script src="{{ asset('assets/vendor/chart.js/dist/Chart.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
     <script src="{{ asset('assets/vendor/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/nouislider/distribute/nouislider.min.js') }}"></script>
@@ -382,6 +280,7 @@
     <script src="{{ asset('assets/js/demo.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.rawgit.com/igorescobar/jQuery-Mask-Plugin/1ef022ab/dist/jquery.mask.min.js"></script>
+    <script src="{{ asset('assets/customer/shop.js') }}"></script>
     <script>
         $(".select2").select2()
 
@@ -407,6 +306,15 @@
         function empty(data) {
             return (data == [] || data == '' || data == undefined)
         }
+
+
+
+        $("img").each(function(index, element) {
+            let selector = $(this)
+            $(this).on('error', function() {
+                selector.attr("src", "{{asset('assets/customer/imgerror.png')}}")
+            })
+        });
     </script>
     @yield('footer')
 

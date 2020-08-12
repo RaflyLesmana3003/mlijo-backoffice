@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,13 +44,9 @@ Route::get('/gabung', function () {
 });
 
 // customer
-Route::get('/customer/{search?}', function ($search = "") {
-    $data = DB::table('v_product');
-    if (!empty($search)) {
-        // $data = $data->where("nama", "like", "%" . $search . "%")->get();
-    }
-    return view("customer/home");
-});
+Route::get('/customers', 'CustomerController@index');
+Route::get('/customers_detail', 'CustomerController@detail');
+Route::get('/customers_mlijo', 'CustomerController@mlijo');
 
 
 
