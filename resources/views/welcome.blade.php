@@ -462,10 +462,10 @@
  				hp: $("#hp").val(),
  				password: $("#password").val(),
  			};
-			 
+
  			$.ajax({
  				type: 'POST',
-				dataType:'JSON',
+ 				dataType: 'JSON',
  				url: '/gabung',
  				data: {
  					nama: $("#nama").val(),
@@ -475,29 +475,29 @@
  				},
  				success: function(data) {
  					//  $(location).attr('href', "{{url('8f8fe8570a6fca0299bce1c90079cbe6/2')}}"); 
-					if(data.error){
-						AlertData('danger' , data.message)
-					}else{
-						AlertData('success' , data.output)
-						$("#formtab input").val("").trigger("change")
-					}
-					console.log(data)
+ 					if (data.error) {
+ 						AlertData('danger', data.message)
+ 					} else {
+ 						AlertData('success', data.output)
+ 						$("#formtab input").val("").trigger("change")
+ 					}
+ 					console.log(data)
  				},
  				error: function(data) {
-					 console.log(data)
-					AlertData("danger")
+ 					console.log(data)
+ 					AlertData("danger")
  				}
- 			}); 
+ 			});
  		};
 
-		 function AlertData(tipe , message ){
-			message = (message==undefined? 'Cek koneksi anda' : message) ;
-			$("#message").append('<div  class="aa alert alert-'+tipe+' alert-block"><button type="button" class="close" data-dismiss="alert">×</button> <strong>' + message + '</strong></div>');
-			setTimeout("$('.aa').fadeOut(1000);", 3000);
-			$("html, body").animate({
-				scrollTop: 0
-			}, "slow");
-		 }
+ 		function AlertData(tipe, message) {
+ 			message = (message == undefined ? 'Cek koneksi anda' : message);
+ 			$("#message").append('<div  class="aa alert alert-' + tipe + ' alert-block"><button type="button" class="close" data-dismiss="alert">×</button> <strong>' + message + '</strong></div>');
+ 			setTimeout("$('.aa').fadeOut(1000);", 3000);
+ 			$("html, body").animate({
+ 				scrollTop: 0
+ 			}, "slow");
+ 		}
  		// Example starter JavaScript for disabling form submissions if there are invalid fields
  	</script>
  </body>

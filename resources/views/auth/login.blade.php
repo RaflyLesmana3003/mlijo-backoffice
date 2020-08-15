@@ -11,7 +11,7 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -35,81 +35,82 @@
 <body class="bg-default">
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-gradient-dark">
-     <div class="container">
-     <a href="{{ url('/') }}">
-                 <img src="{{ asset('assets/img/icon.png') }}" class="avatar avatar-sm">
-               </a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-       <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
-       <div class="navbar-collapse-header">
-           <div class="row">
-             <div class="col-6 collapse-brand">
-             <a href="{{ url('/') }}">
-                 <img src="{{ asset('assets/img/icon.png') }}" class="avatar avatar-sm">
-               </a>
-             </div>
-             <div class="col-6 collapse-close">
-               <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                 <span></span>
-                 <span></span>
-               </button>
-             </div>
-           </div>
-         </div>
-         <ul class="navbar-nav mr-auto">
-           <li class="nav-item">
-             <a href="./pages/dashboards/dashboard.html" class="nav-link">
-               <span class="nav-link-inner--text">home</span>
-             </a>
-           </li><!-- 
+    <div class="container">
+      <a href="{{ url('/') }}">
+        <img src="{{ asset('assets/img/icon.png') }}" class="avatar avatar-sm">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="{{ url('/') }}">
+                <img src="{{ asset('assets/img/icon.png') }}" class="avatar avatar-sm">
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="./pages/dashboards/dashboard.html" class="nav-link">
+              <span class="nav-link-inner--text">home</span>
+            </a>
+          </li>
+          <!-- 
            <li class="nav-item">
              <a href="./pages/examples/pricing.html" class="nav-link">
                <span class="nav-link-inner--text">Pricing</span>
              </a>
            </li> -->
-           <li class="nav-item">
-             <a href="./pages/examples/lock.html" class="nav-link">
-               <span class="nav-link-inner--text">about us</span>
-             </a>
-           </li>
-         </ul>
-         <hr class="d-lg-none" />
-         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-         @if (Route::has('login'))
-                    @auth
-                    <li class="nav-item">
-           <a href="{{ url('106a6c241b8797f52e1e77317b96a201') }}" class="nav-link">
-               <span class="nav-link-inner--text">beranda</span>
-             </a>
-                    @else
-                    <li class="nav-item">
-           <a href="{{ url('login') }}" class="nav-link">
-               <span class="nav-link-inner--text">login</span>
-             </a>
-           </li>
+          <li class="nav-item">
+            <a href="./pages/examples/lock.html" class="nav-link">
+              <span class="nav-link-inner--text">about us</span>
+            </a>
+          </li>
+        </ul>
+        <hr class="d-lg-none" />
+        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+          @if (Route::has('login'))
+          @auth
+          <li class="nav-item">
+            <a href="{{ url('106a6c241b8797f52e1e77317b96a201') }}" class="nav-link">
+              <span class="nav-link-inner--text">beranda</span>
+            </a>
+            @else
+          <li class="nav-item">
+            <a href="{{ url('login') }}" class="nav-link">
+              <span class="nav-link-inner--text">login</span>
+            </a>
+          </li>
 
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-           <a href="{{ url('register') }}" class="nav-link">
-               <span class="nav-link-inner--text">register</span>
-             </a>
-           </li>
-                        @endif
-                    @endauth
-            @endif
+          @if (Route::has('register'))
+          <li class="nav-item">
+            <a href="{{ url('register') }}" class="nav-link">
+              <span class="nav-link-inner--text">register</span>
+            </a>
+          </li>
+          @endif
+          @endauth
+          @endif
 
-            <li class="nav-item d-none d-lg-block ml-lg-4">
-             <a href="{{ url('gabung') }}" target="_blank" class="btn btn-neutral btn-icon">
+          <li class="nav-item d-none d-lg-block ml-lg-4">
+            <a href="{{ url('gabung') }}" target="_blank" class="btn btn-neutral btn-icon">
               <span class="nav-link-inner--text text-success">gabung jadi kreator</span>
-             </a>
-           </li>
+            </a>
+          </li>
 
-         </ul>
-       </div>
-     </div>
-   </nav>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <!-- Main content -->
   <div class="main-content">
     <!-- Header -->
@@ -140,62 +141,62 @@
                 Login
               </div>
               <form method="POST" action="{{ url('native/login') }}">
-                        @csrf
+                @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-12 col-form-label">{{ __('E-Mail Address') }}</label>
+                <div class="form-group row">
+                  <label for="email" class="col-md-12 col-form-label">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-12">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                  <div class="col-md-12">
+                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-12 col-form-label ">{{ __('Password') }}</label>
+                <div class="form-group row">
+                  <label for="password" class="col-md-12 col-form-label ">{{ __('Password') }}</label>
 
-                            <div class="col-md-12">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                  <div class="col-md-12">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                      <label class="form-check-label" for="remember">
+                        {{ __('Remember Me') }}
+                      </label>
+                    </div>
+                  </div>
+                </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-success">
-                                    {{ __('Login') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="form-group row mb-0">
+                  <div class="col-md-8 offset-md-4">
+                    <button type="submit" class="btn btn-success">
+                      {{ __('Login') }}
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
           <div class="row mt-3">
             @if (Route::has('password.request'))
             <div class="col-6">
-            <a href="{{ route('password.request') }}" class="text-light"><small>lupa password?</small></a>
+              <a href="{{ route('password.request') }}" class="text-light"><small>lupa password?</small></a>
             </div>
 
             @endif

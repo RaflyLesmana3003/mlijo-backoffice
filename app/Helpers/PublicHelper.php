@@ -82,7 +82,7 @@ function tryCatch($is_function = "", $Msg = "Suksess", $Err = "Something is real
             return $Err($e);
         } else {
             Log::error('[' . $e->getCode() . '] "' . $e->getMessage() . '" on line ' . $e->getTrace()[5]['line'] . ' of file ' . $e->getTrace()[5]['file']);
-            return responsdata(true, $Err);
+            return responsdata(true, $e->getMessage());
         }
     }
     return responsdata(false, $Msg);

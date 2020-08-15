@@ -72,6 +72,35 @@
         .footer-v {
             width: 100%;
         }
+
+        .featured__item {
+            border: 1px solid lightgrey;
+            border-radius: 20px;
+        }
+
+        .featured__item:hover {
+            border: 1px solid aqua;
+            box-shadow: 0px 0px 20px 5px lightgrey;
+        }
+
+        .featured__item__pic {
+            border-radius: 20px 20px 0px 0px;
+
+        }
+
+        .bg-custom {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<?= url('banner/banner.jpg') ?>);
+            /* background: rgb(2, 0, 36); */
+            /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 1;
+            /* -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px); */
+        }
     </style>
 </head>
 
@@ -251,6 +280,99 @@
             </div>
         </footer>
     </div>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog  bg-success" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title text-white" style="font-weight: bold;" id="exampleModalLabel">Silahkan Login Dahulu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <!-- Title -->
+                            <h5 class="h3 mb-0 collapse RegisterData">Gabung jadi Custommer</h5>
+                            <h5 class="h3 mb-0 collapse show LoginData">Login Custommer</h5>
+                        </div>
+                    </div>
+                    <div class=" collapse  RegisterData">
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <span class="message-alert"></span>
+                                <form id="formtab" class="form">
+
+                                    <label class="form-control-label" for="nama">nama<span style="color:red;">*</span></label>
+                                    <input type="text" class="form-control form-control-sm" name="nama" placeholder="contoh: aldo riswanto" required>
+                                    <br>
+
+                                    <label class="form-control-label" for="HP">No HP<span style="color:red;">*</span></label>
+                                    <input type="text" class="form-control form-control-sm" name="hp" placeholder="contoh: 083115510748" required>
+                                    <br>
+
+                                    <label class="form-control-label" for="alamat">Alamat<span style="color:red;">*</span></label>
+                                    <input type="text" class="form-control form-control-sm" name="alamat" placeholder="contoh: Jl. Raya XXX" required>
+                                    <br>
+
+                                    <label class="form-control-label" for="password">password<span style="color:red;">*</span></label>
+                                    <input type="password" class="form-control form-control-sm" name="password" required>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="align-center">
+
+                            <button class="btn btn-success" form="formtab" type="submit">Daftar jadi mlijo</button>
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls=".LoginData .RegisterData">Sign in</button>
+                        </div>
+                    </div>
+
+                    <div class="collapse show LoginData  ">
+                        <form id="formLogin">
+                            @csrf
+                            <span class="message-alert"></span>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-12 col-form-label">{{ __('No HP ') }}</label>
+
+                                <div class="col-md-12">
+                                    <input id="email" type="text" class="form-control form-control-sm @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-12 col-form-label ">{{ __('Password') }}</label>
+
+                                <div class="col-md-12">
+                                    <input id="password" type="password" class="form-control form-control-sm @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-success">
+                                        {{ __('Login') }}
+                                    </button>
+                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls=".LoginData .RegisterData" aria-expanded="false">Daftar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
@@ -298,6 +420,7 @@
                     success(response)
                 },
                 error: function(Status) {
+                    console.log(Status)
                     error(error)
                 }
             });
@@ -316,9 +439,97 @@
             })
         });
     </script>
-    @yield('footer')
+
+    @yield("script")
+
+    <script>
+        $("#AddCard").submit(function(e) {
+            e.preventDefault();
+            let params = $("#AddCard").serialize()
+            ajaxData("/addChart", params, function(resp) {
+                if (resp.error) {
+                    if (resp.message == 'Login') {
+                        $("#loginModal").modal("show");
+                    } else {
+                        alert(resp.message)
+                    }
+                } else {
+                    alert("Barang Berhasil Ditambahkan");
+                }
+            }, function(data) {
+                alert("Ops.. Something wrong !!");
+            })
+        });
+
+        $(".chard").click(function() {
+            let user = "{{ (!Auth::user())? '' : Auth::user()->id }}";
+            if (empty(user)) {
+                $("#loginModal").modal("show");
+            } else {
+                window.location = "{{url('chard')}}";
+            }
+        })
+
+        $("#formtab").submit(function(e) {
+            e.preventDefault();
+            let params = $("#formtab").serialize()
+            ajaxData("/daftar_customer", params, function(data) {
+                if (data.error) {
+                    AlertData('danger', data.message)
+                } else {
+                    AlertData('success', data.output)
+                    $("#formtab input").val("").trigger("change")
+                }
+                console.log(data)
+            }, function(data) {
+                alert("Ops.. Something wrong !!");
+            })
+        });
 
 
+        $("#formLogin").submit(function(e) {
+            e.preventDefault();
+            let params = $("#formLogin").serialize()
+            ajaxData("/login_customer", params, function(data) {
+                if (data.error) {
+                    AlertData('danger', data.message)
+                } else {
+                    location.reload()
+                }
+                console.log(data)
+            }, function(data) {
+                alert("Ops.. Something wrong !!");
+            })
+        });
+
+        function AlertData(tipe, message) {
+            message = (message == undefined ? 'Cek koneksi anda' : message);
+            $(".message-alert").append('<div  class="aa alert alert-' + tipe + ' alert-block"><button type="button" class="close" data-dismiss="alert">×</button> <strong>' + message + '</strong></div>');
+            setTimeout("$('.aa').fadeOut(1000);", 3000);
+            $("html, body").animate({
+                scrollTop: 0
+            }, "slow");
+        }
+
+        var proQty = $('.pro-qty');
+        proQty.prepend('<span class="dec qtybtn">-</span>');
+        proQty.append('<span class="inc qtybtn">+</span>');
+        proQty.on('click', '.qtybtn', function() {
+            var $button = $(this);
+            var oldValue = $button.parent().find('input').val();
+            if ($button.hasClass('inc')) {
+                var newVal = parseFloat(oldValue) + 1;
+            } else {
+                // Don't allow decrementing below zero
+                if (oldValue > 0) {
+                    var newVal = parseFloat(oldValue) - 1;
+                } else {
+                    newVal = 0;
+                }
+            }
+            $button.parent().find('input').val(newVal);
+        });
+    </script>
 </body>
 
 </html>

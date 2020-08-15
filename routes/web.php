@@ -47,6 +47,13 @@ Route::get('/gabung', function () {
 Route::get('/customers', 'CustomerController@index');
 Route::get('/customers_detail', 'CustomerController@detail');
 Route::get('/customers_mlijo', 'CustomerController@mlijo');
+Route::post('/addChart', 'CustomerController@AddCart');
+Route::post('/daftar_customer', 'CustomerController@daftar');
+Route::post('/login_customer', 'CustomerController@login');
+Route::get('/detail_mlijo', 'CustomerController@detail_mlijo');
+Route::get('/chard', 'CustomerController@chard');
+
+
 
 
 
